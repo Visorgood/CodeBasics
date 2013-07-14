@@ -1,9 +1,12 @@
+import random
+
 def Swap(A, i, j):
 	t = A[i]
 	A[i] = A[j]
 	A[j] = t
 
 def Partition(A, l, r):
+	Swap(A, l, random.randint(l, r))
 	p = A[l]
 	i = l + 1
 	for j in range(l + 1, r + 1):
