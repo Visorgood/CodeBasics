@@ -18,7 +18,7 @@ namespace CodeBasics
 
         public bool StartAsyncTask(TaskDelegate Task)
         {
-            if (null != Task && this.taskCompletedEvent.WaitOne(0))
+            if (null != Task && this.taskCompletedEvent.WaitOne(0, false))
             {
                 this.taskCompletedEvent.Reset();
                 this.exception = null;
@@ -37,7 +37,7 @@ namespace CodeBasics
 
         public bool TaskCompleted
         {
-            get { return this.taskCompletedEvent.WaitOne(0); }
+            get { return this.taskCompletedEvent.WaitOne(0, false); }
         }
 
         public bool CompletedWithError
