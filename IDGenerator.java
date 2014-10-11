@@ -1,13 +1,18 @@
 public class IDGenerator
 {
-	private static int id = 1;
+	private int id;
 	
-	public static void init(int initValue)
+	public void IDGenerator(int initValue)
 	{
 		id = initValue;
 	}
 	
-	public static int getNextId()
+	public void init(int initValue)
+	{
+		id = initValue;
+	}
+	
+	public int getNextId()
 	{
 		return id++;
 	}
