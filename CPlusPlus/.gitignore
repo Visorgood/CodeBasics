@@ -50,7 +50,6 @@ local.properties
 
 # CDT-specific
 .cproject
-.project
 
 # PDT-specific
 .buildpath
