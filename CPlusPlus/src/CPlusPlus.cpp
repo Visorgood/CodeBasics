@@ -1,16 +1,13 @@
-//============================================================================
-// Name        : CPlusPlus.cpp
-// Author      : Viacheslav Inozemtsev
-// Version     :
-// Copyright   : This project is the property of Viacheslav Inozemtsev
-// Description : Hello World in C++, Ansi-style
-//============================================================================
-
 #include <iostream>
+#include "ReverseCString.h"
 using namespace std;
 
 int main()
 {
-	cout << "Hello World!" << endl;
+	string s = "Hello World!";
+	cout << s << endl;
+	char s1[] = "Hello World!";
+	ReverseCString(s1);
+	cout << s1 << endl;
 	return 0;
 }
