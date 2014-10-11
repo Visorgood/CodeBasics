@@ -1,3 +1,8 @@
+# A - array of values
+# x - value to find
+# return value is an index of matched element
+# if x is not in A, then -1 is returned
+
 def BinarySearch(A, x):
       return BinarySearchRec(A, 0, len(A) - 1, x)
       
