@@ -32,6 +32,8 @@
 .gradle
 bin/
 tmp/
+Debug/
+Release/
 *.tmp
 *.bak
 *.swp
@@ -48,6 +50,7 @@ local.properties
 
 # CDT-specific
 .cproject
+.project
 
 # PDT-specific
 .buildpath
