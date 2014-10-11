@@ -1,4 +1,4 @@
 CodeBasics
 ==========
 
-Code examples of standard programming tasks
+Implementation of standard algorithms and data structures
