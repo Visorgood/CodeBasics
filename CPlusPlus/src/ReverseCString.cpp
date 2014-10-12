@@ -1,3 +1,5 @@
+#include "ReverseCString.h"
+
 void ReverseCString(char* str)
 {
 	if (!str)
