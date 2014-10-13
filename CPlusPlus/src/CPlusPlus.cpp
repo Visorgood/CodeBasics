@@ -2,10 +2,14 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "HasUniqueChars.h"
 #include "ReverseCString.h"
 #include "Stack.h"
 #include "Queue.h"
 #include "Heap.h"
+//#include "HashMap.h"
+#include "HasUniqueChars.h"
+#include "Compress.h"
 
 using namespace std;
 
@@ -78,6 +82,32 @@ void useHeap()
 	cout << endl << endl;
 }
 
+void useHashMap()
+{
+
+}
+
+void useHasUniqueChars()
+{
+	cout << "Usage of the HasUniqueChars function." << endl;
+	string s = "abcde";
+	cout << "String \"" << s << "\" has " << (HasUniqueChars(s) ? "unique" : "repeated") << " chars!";
+	cout << endl;
+	s = "abcda";
+	cout << "String \"" << s << "\" has " << (HasUniqueChars(s) ? "unique" : "repeated") << " chars!";
+	cout << endl << endl;
+}
+
+void useCompress()
+{
+	cout << "Usage of the Compress function." << endl;
+	char s[] = "aaabbcccccccdeeee";
+	cout << "Char array: " << s << endl;
+	unsigned int len = Compress(s);
+	cout << "Compressed: " << s;
+	cout << endl << endl;
+}
+
 int main()
 {
 	srand(time(NULL));
@@ -85,5 +115,8 @@ int main()
 	useStack();
 	useQueue();
 	useHeap();
+	useHashMap();
+	useHasUniqueChars();
+	useCompress();
 	return 0;
 }
