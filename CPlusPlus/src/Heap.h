@@ -69,7 +69,7 @@ void Heap<T>::bubbleDown(int i)
 	int j2 = j1 + 1;
 	while (j1 < n)
 	{
-		int j = (j2 >= n || (data[j1] < data[j2]) ? j1 : j2);
+		int j = (j2 >= n || data[j1] < data[j2] ? j1 : j2);
 		if (data[i] <= data[j])
 			break;
 		swap(i, j);
