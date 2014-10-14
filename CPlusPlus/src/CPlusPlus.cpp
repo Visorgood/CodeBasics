@@ -102,15 +102,18 @@ void useCompress()
 {
 	cout << "Usage of the Compress function." << endl;
 	char s[] = "aaabbcccccccdeeee";
+	unsigned int len = strlen(s);
 	cout << "Char array: " << s << endl;
-	unsigned int len = Compress(s);
-	cout << "Compressed: " << s;
+	cout << "Length: " << len << endl;
+	len = Compress(s);
+	cout << "Compressed: " << s << endl;
+	cout << "Length after compression: " << len;
 	cout << endl << endl;
 }
 
 int main()
 {
-	srand(time(NULL));
+	srand(time(0));
 	useReverseCString();
 	useStack();
 	useQueue();

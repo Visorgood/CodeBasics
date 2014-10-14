@@ -10,9 +10,10 @@ bool HasUniqueChars(const string& str)
 	char dc[256] = { 0 };
 	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
 	{
-		if (dc[*it] > 0)
+		int index = (int)*it;
+		if (dc[index] > 0)
 			return false;
-		dc[*it] += 1;
+		dc[index] += 1;
 	}
 	return true;
 }
