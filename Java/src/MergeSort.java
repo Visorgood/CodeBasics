@@ -1,20 +1,21 @@
-
 public class MergeSort
 {
-	public static void Merge(int[] array)
+	public static void Execute(int[] array)
 	{
-		Merge(array, 0, array.length - 1);
+		ExecuteRec(array, 0, array.length - 1);
 	}
 
-	private static void Merge(int[] array, int s, int e)
+	private static void ExecuteRec(int[] array, int s, int e)
 	{
-		if (e - s < 1)
-			return;
-		
+		if (e <= s)	return;
 		int m = (e + s) / 2;
-		Merge(array, s, m);
-		Merge(array, m + 1, e);
-		
+		ExecuteRec(array, s, m);
+		ExecuteRec(array, m + 1, e);
+		MergeSubarrays(array, s, e, m);
+	}
+	
+	private static void MergeSubarrays(int[] array, int s, int e, int m)
+	{
 		int[] merged = new int[e - s + 1];
 		int i = s, j = m + 1;
 		for (int k = 0; k < merged.length; ++k)
