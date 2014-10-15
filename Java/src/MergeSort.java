@@ -1,20 +1,20 @@
-public class MergeSort
+public class MergeSort implements Sort
 {
-	public static void Execute(int[] array)
+	public void execute(int[] array)
 	{
-		ExecuteRec(array, 0, array.length - 1);
+		executeRec(array, 0, array.length - 1);
 	}
 
-	private static void ExecuteRec(int[] array, int s, int e)
+	private void executeRec(int[] array, int s, int e)
 	{
 		if (e <= s)	return;
 		int m = (e + s) / 2;
-		ExecuteRec(array, s, m);
-		ExecuteRec(array, m + 1, e);
-		MergeSubarrays(array, s, e, m);
+		executeRec(array, s, m);
+		executeRec(array, m + 1, e);
+		mergeSubarrays(array, s, e, m);
 	}
 	
-	private static void MergeSubarrays(int[] array, int s, int e, int m)
+	private void mergeSubarrays(int[] array, int s, int e, int m)
 	{
 		int[] merged = new int[e - s + 1];
 		int i = s, j = m + 1;
