@@ -6,5 +6,6 @@ public class Main
 	{
 		//new StoreCredit().execute();
 		//new ReverseWords().execute();
+		new MinimumScalarProduct().execute();
 	}
 }
