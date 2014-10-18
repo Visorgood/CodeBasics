@@ -1,42 +1,23 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
-public class StoreCredit
+public class StoreCredit extends Problem
 {
-	public void execute() throws IOException
+	public StoreCredit()
 	{
-		String problemName = "StoreCredit";
-		String[] inputs = new String[] { problemName + "-small", problemName + "-large" };
-		for (String input : inputs)
-		{
-			System.out.println(input);
-			FileWriter fw = new FileWriter(input + ".out");
-			List<String> inputLines = Files.readAllLines(Paths.get(input + ".in"), Charset.defaultCharset());
-			int N = Integer.parseInt(inputLines.get(0));
-			for (int i = 0; i < N; ++i)
-			{
-				int C = Integer.parseInt(inputLines.get(1 + i * 3));
-				int I = Integer.parseInt(inputLines.get(1 + i * 3 + 1));
-				String[] Ls = inputLines.get(1 + i * 3 + 2).split(" ");
-				int[] L = new int[I];
-				for (int j = 0; j < I; ++j)
-					L[j] = Integer.parseInt(Ls[j]);
-				Indexes indexes = computeIndexes(C, I, L);
-				if (indexes != null)
-				{
-					String output = String.format("Case #%d: %d %d\n", i + 1, indexes.i, indexes.j);
-					System.out.print(output);
-					fw.write(output);
-				}
-			}
-			fw.close();
-			System.out.println();
-		}
+		this.problemName = "StoreCredit";
+	}
+	
+	protected String solveProblemInstance(List<String> lines, int i)
+	{
+		int C = Integer.parseInt(lines.get(1 + i * 3));
+		int I = Integer.parseInt(lines.get(1 + i * 3 + 1));
+		String[] Ls = lines.get(1 + i * 3 + 2).split(" ");
+		int[] L = new int[I];
+		for (int j = 0; j < I; ++j)
+			L[j] = Integer.parseInt(Ls[j]);
+		Indexes indexes = computeIndexes(C, I, L);
+		return (indexes != null ? String.format("Case #%d: %d %d%n", i + 1, indexes.i, indexes.j) : null);
 	}
 	
 	private Indexes computeIndexes(int C, int I, int[] L)
