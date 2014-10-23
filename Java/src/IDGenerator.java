@@ -2,7 +2,7 @@ public class IDGenerator
 {
 	private int id;
 	
-	public void IDGenerator(int initValue)
+	public IDGenerator(int initValue)
 	{
 		id = initValue;
 	}

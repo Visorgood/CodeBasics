@@ -1,12 +1,32 @@
 import java.io.IOException;
+import java.util.BitSet;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Main
 {
+	private static Boolean allCharsUniq(String str)
+	{
+		BitSet bs = new BitSet(256);
+		for (char c : str.toCharArray())
+		{
+			if (bs.get(c))
+				return false;
+			bs.set(c);
+		}
+		return true;
+	}
+
+	
 	public static void main(String[] args) throws IOException
 	{
-		useSort(new MergeSort());
-		useSort(new QuickSort());
+		//useSort(new MergeSort());
+		//useSort(new QuickSort());
+		//System.out.println(allCharsUniq("abcdefgh"));
+		Iterator<String> it = Subsets.generate("abcde");
+		//Iterator<String> it = Permutations.generate("abcde");
+		while (it.hasNext())
+			System.out.println(it.next());
 	}
 	
 	static void useSort(Sort sort)
