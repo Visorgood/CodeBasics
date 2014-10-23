@@ -23,8 +23,9 @@ public class Main
 		//useSort(new MergeSort());
 		//useSort(new QuickSort());
 		//System.out.println(allCharsUniq("abcdefgh"));
-		Iterator<String> it = Subsets.generate("abcde");
+		//Iterator<String> it = Subsets.generate("abcde");
 		//Iterator<String> it = Permutations.generate("abcde");
+		Iterator<String> it = PhoneNumberStringPermutations.generate("0123");
 		while (it.hasNext())
 			System.out.println(it.next());
 	}
