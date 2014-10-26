@@ -25,9 +25,16 @@ public class Main
 		//System.out.println(allCharsUniq("abcdefgh"));
 		//Iterator<String> it = Subsets.generate("abcde");
 		//Iterator<String> it = Permutations.generate("abcde");
-		Iterator<String> it = PhoneNumberStringPermutations.generate("0123");
-		while (it.hasNext())
-			System.out.println(it.next());
+		//Iterator<String> it = PhoneNumberStringPermutations.generate("0123");
+		//while (it.hasNext())
+			//System.out.println(it.next());
+		int[][] matrix = new int[][] {
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0}};
+		long ways = CountWays.count(matrix);
+		System.out.println(ways);
 	}
 	
 	static void useSort(Sort sort)
