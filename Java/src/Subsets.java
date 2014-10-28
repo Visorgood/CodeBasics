@@ -12,7 +12,7 @@ public class Subsets {
     return subsets.iterator();
   }
   
-  public static void generate(String str, int i, StringBuilder sb, LinkedList<String> subsets) {
+  private static void generate(String str, int i, StringBuilder sb, LinkedList<String> subsets) {
     subsets.addLast(sb.toString());
     if (i == str.length()) {
       return;
@@ -43,4 +43,23 @@ public class Subsets {
       sb.setLength(sb.length() - 1);
     }
   }
+  /*
+  private final String str;
+  private int i;
+  private StringBuilder sb;
+
+  public Subsets(String str) {
+    this.str = str;
+    this.i = 0;
+    this.sb = new StringBuilder();
+  }
+
+  public boolean hasNext() {
+    return true;
+  }
+
+  public String next() {
+    return "";
+  }
+  */
 }
