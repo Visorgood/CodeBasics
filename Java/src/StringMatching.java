@@ -15,4 +15,18 @@ public class StringMatching {
     }
     return -1;
   }
+  
+  public static int naiveUsingPrefixTree(String T, String P) {
+    int n = T.length();
+    int m = P.length();
+    PrefixTree trie = new PrefixTree();
+    for (int i = 0; i < n - m + 1; ++i) {
+      trie.insert(T.substring(i, i + m), i);
+      int index = trie.get(P);
+      if (index > -1) {
+        return index;
+      }
+    }
+    return -1;
+  }
 }
