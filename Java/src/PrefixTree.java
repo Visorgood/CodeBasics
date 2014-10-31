@@ -58,6 +58,21 @@ public class PrefixTree {
     }
     return node.value;
   }
+  
+  public boolean isPrefixOfKey(String prefix) {
+    if (prefix == null) {
+      return false;
+    }
+    Node node = root;
+    for (int i = 0; i < prefix.length(); ++i) {
+      String symbol = prefix.substring(i, i + 1);
+      node = node.children.get(symbol);
+      if (node == null) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   private class Node {
     String symbol;
