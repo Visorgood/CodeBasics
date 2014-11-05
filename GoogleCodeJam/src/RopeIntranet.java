@@ -50,6 +50,7 @@ public class RopeIntranet {
   
   private String solveProblemInstance(Rope[] ropes, int i) {
     int n = 0;
+    // to devise and implement
     return String.format("Case #%d: %d%n", i + 1, n);
   }
 }
