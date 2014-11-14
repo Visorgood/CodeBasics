@@ -6,7 +6,7 @@ public class BinarySearch {
     int l = 0;
     int r = array.length - 1;
     while (l <= r) {
-      int m = (l + r) >> 1; // division by 2
+      int m = l + (r - l) / 2;
       if (array[m] == key) {
         return m;
       } else if (array[m] > key) {
