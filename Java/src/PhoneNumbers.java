@@ -2,14 +2,18 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class PhoneNumbers {
-  public static Iterator<String> generate(String number) {
+  public static Iterator<String> generate(String number, boolean recursive) {
     if (number == null)
       return null;
     LinkedList<String> list = new LinkedList<String>();
     if (number.length() == 0)
       return list.iterator();
     StringBuilder sb = new StringBuilder();
-    generateRec(number, sb, list);
+    if (recursive) {
+      generateRec(number, sb, list);
+    } else {
+      generateNoRec(number, sb, list);
+    }
     return list.iterator();
   }
 
@@ -23,6 +27,36 @@ public class PhoneNumbers {
       sb.append(c);
       generateRec(number, sb, list);
       sb.setLength(sb.length() - 1);
+    }
+  }
+  
+  private static void generateNoRec(String number, StringBuilder sb, LinkedList<String> list) {
+    for (char c : number.toCharArray()) {
+      sb.append(digitToChars(c)[0]);
+    }
+    do {
+      list.add(sb.toString());
+    } while (increment(number, sb));
+  }
+  
+  private static boolean increment(String number, StringBuilder sb) {
+    for (int i = sb.length() - 1; i >= 0; --i) {
+      if (incrementChar(number.charAt(i), sb, i)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean incrementChar(char c, StringBuilder sb, int i) {
+    char[] chars = digitToChars(c);
+    char p = sb.charAt(i);
+    if (p == chars[chars.length - 1]) {
+      sb.setCharAt(i, chars[0]);
+      return false;
+    } else {
+      sb.setCharAt(i, chars[p - chars[0] + 1]);
+      return true;
     }
   }
 
@@ -46,37 +80,6 @@ public class PhoneNumbers {
         return new char[] {'w', 'x', 'y', 'z'};
       default:
         return new char[] {'-'};
-    }
-  }
-  
-  public static void printWithouteRcursion(String number) {
-    StringBuilder sb = new StringBuilder();
-    for (char c : number.toCharArray()) {
-      sb.append(digitToChars(c)[0]);
-    }
-    do {
-      System.out.println(sb.toString());
-    } while (increment(number, sb));
-  }
-  
-  private static boolean increment(String number, StringBuilder sb) {
-    for (int i = 0; i < sb.length(); ++i) {
-      if (incrementChar(number.charAt(i), sb, i)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean incrementChar(char c, StringBuilder sb, int i) {
-    char[] chars = digitToChars(c);
-    char p = sb.charAt(i);
-    if (p == chars[chars.length - 1]) {
-      sb.setCharAt(i, chars[0]);
-      return false;
-    } else {
-      sb.setCharAt(i, chars[p - chars[0] + 1]);
-      return true;
     }
   }
 }
