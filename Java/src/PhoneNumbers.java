@@ -48,4 +48,35 @@ public class PhoneNumbers {
         return new char[] {'-'};
     }
   }
+  
+  public static void printWithouteRcursion(String number) {
+    StringBuilder sb = new StringBuilder();
+    for (char c : number.toCharArray()) {
+      sb.append(digitToChars(c)[0]);
+    }
+    do {
+      System.out.println(sb.toString());
+    } while (increment(number, sb));
+  }
+  
+  private static boolean increment(String number, StringBuilder sb) {
+    for (int i = 0; i < sb.length(); ++i) {
+      if (incrementChar(number.charAt(i), sb, i)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean incrementChar(char c, StringBuilder sb, int i) {
+    char[] chars = digitToChars(c);
+    char p = sb.charAt(i);
+    if (p == chars[chars.length - 1]) {
+      sb.setCharAt(i, chars[0]);
+      return false;
+    } else {
+      sb.setCharAt(i, chars[p - chars[0] + 1]);
+      return true;
+    }
+  }
 }
