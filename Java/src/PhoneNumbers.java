@@ -8,18 +8,21 @@ public class PhoneNumbers {
     LinkedList<String> list = new LinkedList<String>();
     if (number.length() == 0)
       return list.iterator();
-    generateRec(number, 0, "", list);
+    StringBuilder sb = new StringBuilder();
+    generateRec(number, sb, list);
     return list.iterator();
   }
 
-  private static void generateRec(String number, int i, String s, LinkedList<String> list) {
-    if (i == number.length()) {
-      list.add(s);
+  private static void generateRec(String number, StringBuilder sb, LinkedList<String> list) {
+    if (sb.length() == number.length()) {
+      list.add(sb.toString());
       return;
     }
-    char[] chars = digitToChars(number.charAt(i));
+    char[] chars = digitToChars(number.charAt(sb.length()));
     for (char c : chars) {
-      generateRec(number, i + 1, s + c, list);
+      sb.append(c);
+      generateRec(number, sb, list);
+      sb.setLength(sb.length() - 1);
     }
   }
 
