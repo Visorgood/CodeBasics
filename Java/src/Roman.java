@@ -26,4 +26,10 @@ public class Roman {
     }
     return result;
   }
+  
+  public static String intToRoman(int value) {
+    StringBuilder sb = new StringBuilder();
+      
+    return sb.toString();
+  }
 }
