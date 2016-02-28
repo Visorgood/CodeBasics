@@ -1,0 +1,57 @@
+public class SieveOfEratosthenes {
+    public static void main(String[] args) {
+        final int N = 10000000;
+        sieveOfEratosthenes(N);
+        simpleAlgorithm(N);
+    }
+
+    private static void sieveOfEratosthenes(final int N) {
+        System.out.println("sieveOfEratosthenes(" + N + ")");
+        final long start = System.currentTimeMillis();
+        int count = 0;
+        final int len = N - 1;
+        final int[] numbers = new int[len];
+        for (int i = 0; i < len; ++i) {
+            numbers[i] = i + 2;
+        }
+        for (int i = 0; i < len; ++i) {
+            if (numbers[i] > 0) {
+                final int p = numbers[i];
+                ++count;
+                for (int k = 2, value = k * p; value <= N; ++k, value = k * p) {
+                    numbers[value - 2] = 0;
+                }
+            }
+        }
+        final long end = System.currentTimeMillis();
+        System.out.println("Primes: " + count);
+        System.out.println("Took: " + (end - start) + " millis");
+    }
+
+    private static void simpleAlgorithm(final int N) {
+        System.out.println("simpleAlgorithm(" + N + ")");
+        final long start = System.currentTimeMillis();
+        int count = 0;
+        if (N >= 2) {
+            ++count;
+        }
+        for (int p = 3; p <= N; p += 2) {
+            if (isPrime(p)) {
+                ++count;
+            }
+        }
+        final long end = System.currentTimeMillis();
+        System.out.println("Primes: " + count);
+        System.out.println("Took: " + (end - start) + " millis");
+    }
+
+    private static boolean isPrime(final int p) {
+        final int sqrtP = (int) Math.sqrt(p);
+        for (int k = 3; k <= sqrtP; k += 2) {
+            if (p % k == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
